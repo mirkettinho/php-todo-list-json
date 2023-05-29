@@ -7,6 +7,8 @@
 
   <!-- BOOTSTRAP -->
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-KK94CHFLLe+nY2dmCWGMq91rCGa5gtU4mk92HdvYe+M/SXH301p5ILy+dN9+nJOZ" crossorigin="anonymous">
+  <!-- AXIOS -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/1.4.0/axios.min.js" integrity="sha512-uMtXmF28A2Ab/JJO2t/vYhlaa/3ahUOgj1Zf27M5rOo8/+fcTUVH0/E0ll68njmjrLqOBjXM3V9NiPFL5ywWPQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
   <!-- FONT-AWESOME -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
   <!-- VUE -->
@@ -27,10 +29,9 @@
             <div class="card-body p-4 text-white">
   
               <div class="text-center pt-3 pb-2">
-                <img src="https://mdbcdn.b-cdn.net/img/Photos/new-templates/bootstrap-todo-list/check1.webp"
-                  alt="Check" width="60">
                 <h2 class="my-4">Task List</h2>
-                <input v-model="addTaskString"  @keyup.enter="aggiungi"  class="rounded-8" type="text" placeholder="New Task....">
+
+                <input v-model="addNewTask"  @keyup.enter="aggiungi"  class="rounded-8" type="text" placeholder="New Task....">
                 <button @click="aggiungi" class="btn btn-primary">Add</button>
               </div>
   
@@ -44,12 +45,9 @@
                   </tr>
                 </thead>
                 <tbody>
-                  <tr>
-                    <td>Non ci sono task '-'</td>
-                  </tr>
-                  <tr v-else class="fw-normal" v-for="(task,index) in tasks" :class="{'done' : task.done}" @click="task.done = !task.done">
+                  <tr  class="fw-normal" v-for="(task,index) in tasks">
                     <td>
-                      <span class="ms-2">{{task.text}}</span>
+                      <span class="ms-2" >{{task}}</span>
                     </td>
                     <td class="align-middle">
                     </td>
@@ -58,7 +56,7 @@
                     <td class="align-middle d-flex justify-content-end">
                       <a href="#!" data-mdb-toggle="tooltip" title="Remove">
                         <i
-                          @click="deleteTask(index)"
+                          @click=""
                           class="fas fa-trash-alt fa-lg text-warning">
                         </i>
                       </a>

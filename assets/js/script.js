@@ -11,9 +11,19 @@ createApp({
 
   methods:{
 
+    aggiungi(){
+      this.tasks.push(this.addNewTask)
+    },
+    getApi(){
+      axios.get(this.ApiUrl)
+      .then(response => {
+        console.log(response);
+        this.tasks = response.data
+      })
+    }
   },
 
   mounted(){
-
+    this.getApi()
   }
 }).mount("#app")
